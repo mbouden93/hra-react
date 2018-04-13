@@ -21,7 +21,7 @@ class Logout extends React.Component {
     }
 
     render () {
-        return <a onClick={this.logout.bind(this)}><Icon name="big power off"></Icon></a>
+        return <a onClick={this.logout.bind(this)}><Icon size={'big'} name="power"></Icon></a>
     }
 }
 

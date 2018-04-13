@@ -1,5 +1,6 @@
 import React from 'react';
-import {Button, Form, Message} from "semantic-ui-react";
+import {Button, Form, Grid, Header, Image, Message} from "semantic-ui-react";
+import logo from '../logo.jpg';
 
 const sessionManager = require('../sessionmanager');
 
@@ -74,22 +75,41 @@ class LoginForm extends React.Component {
     render() {
         const {username, password, loading} = this.state;
         return (
-            <Form loading={loading} onSubmit={this.submitLogin}>
-                <Form.Field >
-                    <label>Identifiant</label>
-                    <input type="text" onChange={this.changeUsername} value={username} placeholder='Identifiant' />
-                </Form.Field>
-                <Form.Field>
-                    <label>Mot de passe</label>
-                    <input type="password" onChange={this.changePassword} value={password} placeholder='Mot de passe' />
-                </Form.Field>
-                {this.state.message &&
-                    <Message negative >
-                        <Message.Header>Identifiant / Mot de passe incorrect.</Message.Header>
-                    </Message>
-                }
-                <Button primary type='submit'>Submit</Button>
-            </Form>
+            <div className='login-form'>
+                <style>{`
+                  body > div,
+                  body > div > div,
+                  body > div > div > div.login-form {
+                    height: 100%;
+                  }
+                `}</style>
+            <Grid
+                textAlign='center'
+                style={{ height: '100%' }}
+                verticalAlign='middle'
+                stackable
+            >
+                <Grid.Column  style={{ maxWidth: 450 }}>
+                    <Header as='h2' color='teal' textAlign='center'>
+                        <Image  style={{width: 150, height: 150}} src={logo}/>
+                    </Header>
+                        <Form loading={loading} onSubmit={this.submitLogin}>
+                            <Form.Field >
+                                <input type="text" onChange={this.changeUsername} value={username} placeholder='Identifiant' />
+                            </Form.Field>
+                            <Form.Field>
+                                <input type="password" onChange={this.changePassword} value={password} placeholder='Mot de passe' />
+                            </Form.Field>
+                            {this.state.message &&
+                                <Message negative >
+                                    <Message.Header>Identifiant / Mot de passe incorrect.</Message.Header>
+                                </Message>
+                            }
+                            <Button fluid color="red" type='submit'>Submit</Button>
+                        </Form>
+                </Grid.Column>
+            </Grid>
+            </div>
         );
     }
 }

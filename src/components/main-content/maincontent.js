@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container, Grid, Input} from 'semantic-ui-react'
+import {Container, Grid, Input, Header, Segment} from 'semantic-ui-react'
 import CustomTimeLine from "../CustomTimeLine";
 import Tasks from "./tasks";
 
@@ -9,7 +9,7 @@ export default class MainContent extends React.Component {
         return (
             <Container fluid>
                 <Grid stackable>
-                        <Grid.Column style={{background: "#666"}} width={11}>
+                        <Grid.Column width={11}>
                         <Grid stackable={true}>
                             <Grid.Column width={9}>
                                 <Input fluid/>
@@ -34,8 +34,13 @@ export default class MainContent extends React.Component {
                             </Grid.Column>
                         </Grid>
                     </Grid.Column>
-                    <Grid.Column style={{background: "#999"}} width={3}>
-                        <Tasks/>
+                    <Grid.Column width={3}>
+                        <Header as='h2' attached='top' textAlign='center'>
+                            Mes Tâches
+                        </Header>
+                        <Segment attached>
+                            <Tasks/>
+                        </Segment>
                     </Grid.Column>
                 </Grid>
             </Container>
