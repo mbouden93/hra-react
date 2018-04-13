@@ -7,7 +7,7 @@ const sessionManager = require('../sessionmanager');
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {username: '', password: '', loading: false, message: false};
+        this.state = {username: '', password: '', loading: false, message: false, erreur: ''};
 
         this.changeUsername = this.changeUsername.bind(this);
         this.changePassword = this.changePassword.bind(this);
@@ -54,7 +54,8 @@ class LoginForm extends React.Component {
                     this.setState({message: false});
                     this.props.history.push("/home");
                 } else {
-                    this.setState({message: true});
+                    let err = body.errors.error.label;
+                    this.setState({erreur : err, message: true});
                 }
             })
             .catch(error => {
@@ -102,7 +103,7 @@ class LoginForm extends React.Component {
                             </Form.Field>
                             {this.state.message &&
                                 <Message negative >
-                                    <Message.Header>Identifiant / Mot de passe incorrect.</Message.Header>
+                                    <Message.Header>{this.state.erreur}</Message.Header>
                                 </Message>
                             }
                             <Button fluid color="red" type='submit'>Submit</Button>
