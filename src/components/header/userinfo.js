@@ -1,5 +1,4 @@
 import React from 'react';
-
 const sessionManager = require('../../sessionmanager');
 
 class UserInfo extends React.Component {

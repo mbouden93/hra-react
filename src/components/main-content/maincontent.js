@@ -8,7 +8,7 @@ export default class MainContent extends React.Component {
     render() {
         return (
             <Container fluid>
-                <Grid stackable>
+                <Grid celled="internally" stackable>
                         <Grid.Column width={11}>
                         <Grid stackable={true}>
                             <Grid.Column width={9}>

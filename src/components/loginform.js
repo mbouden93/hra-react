@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, Grid, Header, Image, Message} from "semantic-ui-react";
+import {Button, Form, Grid, Header, Image, Input, Message} from "semantic-ui-react";
 import logo from '../logo.jpg';
 
 const sessionManager = require('../sessionmanager');
@@ -96,10 +96,10 @@ class LoginForm extends React.Component {
                     </Header>
                         <Form loading={loading} onSubmit={this.submitLogin}>
                             <Form.Field >
-                                <input type="text" onChange={this.changeUsername} value={username} placeholder='Identifiant' />
+                                <Input icon='user' iconPosition='left' type="text" onChange={this.changeUsername} value={username} placeholder='Identifiant' />
                             </Form.Field>
                             <Form.Field>
-                                <input type="password" onChange={this.changePassword} value={password} placeholder='Mot de passe' />
+                                <Input icon='key' iconPosition='left' type="password" onChange={this.changePassword} value={password} placeholder='Mot de passe' />
                             </Form.Field>
                             {this.state.message &&
                                 <Message negative >

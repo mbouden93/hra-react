@@ -22,7 +22,6 @@ class Tasks extends React.Component{
         )
             .then(response => response.json())
             .then(body => {
-                console.log(body);
                 if (body.status === 'OK') {
                     let items = body.task;
                     let liste = [];
