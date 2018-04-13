@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93f523d9-683a-4183-9331-8f12b307ac90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/loginform.js" afterPath="$PROJECT_DIR$/src/components/loginform.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
-    </list>
+    <list default="true" id="93f523d9-683a-4183-9331-8f12b307ac90" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -407,12 +404,12 @@
       <workItem from="1523346027895" duration="6399000" />
       <workItem from="1523367327894" duration="24227000" />
       <workItem from="1523518335437" duration="21625000" />
-      <workItem from="1523609365883" duration="4473000" />
+      <workItem from="1523609365883" duration="4531000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101014000" />
+    <option name="totallyTimeSpent" value="101072000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
