@@ -9,7 +9,7 @@ class UserInfo extends React.Component {
 
     componentDidMount() {
         let employee = sessionManager.getEmployeeRole();
-        let population = localStorage.getItem("population");
+        let population = localStorage.getItem("dossierId");
         fetch('http://localhost:8080/hr-business-services-rest/business-services/gp/ASW018E0?role='+employee+'&startpop='+population
             , {
                 method: 'GET',

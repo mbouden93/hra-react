@@ -7,8 +7,8 @@ export default class MainContent extends React.Component {
 
     render() {
         return (
-            <Container fluid>
-                <Grid celled="internally" stackable>
+            <Container fluid style={{paddingLeft:'20px'}}>
+                <Grid stackable>
                         <Grid.Column width={11}>
                         <Grid stackable={true}>
                             <Grid.Column width={9}>
@@ -34,7 +34,7 @@ export default class MainContent extends React.Component {
                             </Grid.Column>
                         </Grid>
                     </Grid.Column>
-                    <Grid.Column width={3}>
+                    <Grid.Column width={4} style={{'overflowY': 'scroll', height : '529px'}}>
                         <Header as='h2' attached='top' textAlign='center'>
                             Mes Tâches
                         </Header>

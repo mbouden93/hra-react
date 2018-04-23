@@ -20,7 +20,7 @@ class Logout extends React.Component {
     }
 
     render () {
-        return <a onClick={this.logout.bind(this)}><Icon size={'big'} name="power"></Icon></a>
+        return <a onClick={this.logout.bind(this)} style={{cursor: 'pointer'}}><Icon size={'big'} name="power"></Icon></a>
     }
 }
 

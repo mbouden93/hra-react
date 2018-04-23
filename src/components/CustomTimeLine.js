@@ -3,9 +3,43 @@ import moment from "moment";
 
 import Timeline from "react-calendar-timeline/lib";
 
+const parseString = require('xml2js').parseString;
+const sessionManager = require('../sessionmanager');
+
 export default class CustomTimeLine extends Component {
     constructor(props) {
         super(props);
+        this.state = {hello : []};
+        var liste = [];
+        fetch('http://localhost:8080/hr-business-services-rest/business-services/myTeam?role='
+                    +sessionManager.getEmployeeRole()+'&dossierID='+localStorage.getItem("dossierId"),
+            {
+                method: 'GET',
+                credentials: 'include',
+                headers: new Headers({
+                    'Accept': 'application/*',
+                    'Accept-Language': 'fr-FR',
+                })
+            }
+            ).then(response => response.text()).then( xml => {parseString(xml, function (err, result) {
+                console.log(result);
+                let res = result.teamResponse;
+                if (res.status[0] === 'OK') {
+                    console.log(res);
+                    res.members[0].member.map(item => {
+                        let x = {id : item["$"].dossierID, title : item["$"].name};
+                        liste.push(x);
+                        return liste;
+                    });
+                    console.log(liste);
+                    return liste;
+                }
+                return liste;
+                });
+                this.setState({hello : liste});
+                console.log(this.state.hello);
+            }
+        );
 
         const defaultTimeStart = moment()
             .startOf("month")
@@ -22,10 +56,8 @@ export default class CustomTimeLine extends Component {
             month: 1,
             year: 1
         };
-        const groups = [
-            {id: 1, title: 'group 1'},
-            {id: 2, title: 'group 2'}
-        ];
+
+        var groups = this.state.hello;
 
         const items = [
             {id: 1, group: 1, title: 'item 1', start_time: moment(), end_time: moment().add(3, 'day')},

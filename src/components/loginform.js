@@ -12,6 +12,10 @@ class LoginForm extends React.Component {
         this.changeUsername = this.changeUsername.bind(this);
         this.changePassword = this.changePassword.bind(this);
         this.submitLogin = this.submitLogin.bind(this);
+
+        if(sessionManager.readCookie("sessionId")) {
+            window.location.assign("/home");
+        }
     }
 
     submitLogin(event) {
@@ -38,19 +42,7 @@ class LoginForm extends React.Component {
             .then(body => {
                 this.setState({loading: false});
                 if( body.status === 'OK') {
-                    let x = sessionManager.e4();
-                    sessionManager.writeCookie("sessionId", x, 30);
-                    let roles = [];
-                    let population = "";
-                    body.roles.role.map( role => {
-                        roles.push(role["@name"]);
-                        if (role["@name"].includes("EMPLOYEE")) {
-                            population = role["@dossierID"];
-                        }
-                        return true;
-                    });
-                    localStorage.setItem("roles", roles);
-                    localStorage.setItem("population", population);
+                    sessionManager.createSession(body);
                     this.setState({message: false});
                     this.props.history.push("/home");
                 } else {

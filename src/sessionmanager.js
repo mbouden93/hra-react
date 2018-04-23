@@ -68,4 +68,21 @@ function getUserName(user) {
     return value;
 }
 
-export { readCookie, writeCookie, e4, getEmployeeRole, getUserName };
+function createSession(body) {
+    let x = e4();
+    writeCookie("sessionId", x, 30);
+    let roles = [];
+    let population = "";
+    body.roles.role.map( role => {
+        roles.push(role["@name"]);
+        if (role["@name"].includes("EMPLOYEE")) {
+            population = role["@dossierID"];
+        }
+        return true;
+    });
+    localStorage.setItem("roles", roles);
+    localStorage.setItem("dossierId", population);
+    return true;
+}
+
+export { readCookie, writeCookie, e4, getEmployeeRole, getUserName, createSession };

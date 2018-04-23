@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import {Button, Card} from "semantic-ui-react";
 
 class SingleTask extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {visible : false};
+    }
+
     render() {
-        return (<Card>
+        return (
+
+            <Card style={{height:'180px', marginTop:'10px', marginBottom:'10px', paddingRight:'20px'}} color={'yellow'} onMouseEnter={()=>(this.setState({visible:true}))}
+                      onMouseLeave={()=>(this.setState({visible:false}))}>
             <Card.Content>
                 <Card.Header>
                     {this.props.label}
@@ -16,12 +25,12 @@ class SingleTask extends React.Component {
                     <strong>{this.props.subject}</strong>
                 </Card.Description>
             </Card.Content>
-            <Card.Content extra>
-                <div className='ui two buttons'>
-                    <Button basic color='green'>Approve</Button>
-                    <Button basic color='red'>Decline</Button>
-                </div>
-            </Card.Content>
+            {this.state.visible && <Card.Content extra >
+                <Button.Group size={'tiny'} style={{visible:this.state.visible}}>
+                    <Button basic size={'tiny'} color='green'>Accepter</Button>
+                    <Button basic size={'small'} color='red'>Refuser</Button>
+                </Button.Group>
+            </Card.Content>}
         </Card>);
     }
 }

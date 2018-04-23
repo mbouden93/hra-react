@@ -1,6 +1,6 @@
 import React from 'react';
 import SingleTask from "./singletask";
-import {Card} from "semantic-ui-react";
+import {Card, List, Transition} from "semantic-ui-react";
 
 const sessionManager = require('../../sessionmanager');
 
@@ -40,7 +40,12 @@ class Tasks extends React.Component{
     render() {
         return (
             <Card.Group>
-                {this.state && this.state.tasks}
+                {this.state &&
+                <Transition.Group as={List} duration={1200} divided >
+                    {this.state.tasks.map(task => <List.Item>
+                        <List.Content header = {task}/>
+                    </List.Item>)}
+                </Transition.Group>}
             </Card.Group>
         );
     }
